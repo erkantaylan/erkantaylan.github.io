@@ -4,7 +4,7 @@ layout: default
 
 Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
 
-[Link to couchsurfing page](./pages/coucsurfing.md).
+[Link to couchsurfing page](./pages/couchsurfing.md).
 
 There should be whitespace between paragraphs.
 
