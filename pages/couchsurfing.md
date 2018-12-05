@@ -12,4 +12,4 @@ This is not complete __tutorial__, I am just **experimenting**.
 1.  You don't need to ask for restroom. Just do it. (When you enter home, it is on your left.)
 1.  If you cook, I wash dishes. If I cook I was dishes.
 
-[Get me out of here!](././)
+
