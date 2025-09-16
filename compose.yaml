@@ -1,0 +1,13 @@
+﻿name: githubpage
+
+services:
+  githubpage:
+    image: githubpage
+    ports:
+      - '42000:80'
+    build:
+      context: .
+      dockerfile: GithubPage/Dockerfile
+    volumes:
+      - ./GithubPage/nginx.conf:/etc/nginx/nginx.conf:ro
+
