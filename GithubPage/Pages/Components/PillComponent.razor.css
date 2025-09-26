@@ -1,0 +1,10 @@
+﻿.pill {
+    display: inline-block;
+    border: 1px solid var(--neutral-stroke-layer-rest);
+    padding: 4px 10px;
+    border-radius: var(--corner-radius-large, 999px);
+    font-size: 12px;
+    line-height: 1;
+    color: var(--neutral-foreground-2-rest);
+    background: var(--neutral-layer-1);
+}

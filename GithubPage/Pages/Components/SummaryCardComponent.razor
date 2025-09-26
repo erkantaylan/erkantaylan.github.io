@@ -1,0 +1,19 @@
+﻿<div class="summary-card">
+    @if (!string.IsNullOrWhiteSpace(Title))
+    {
+        <h2 class="summary-title">@Title</h2>
+    }
+    <div class="summary-content">
+        @ChildContent
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+}

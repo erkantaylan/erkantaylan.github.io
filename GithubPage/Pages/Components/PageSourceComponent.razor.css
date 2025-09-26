@@ -1,0 +1,64 @@
+﻿/* Token-driven, works with light/dark when you toggle FluentUI theme */
+.source-attribution {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+    align-items: start;
+
+    padding: 10px 12px;
+    border: 1px solid var(--neutral-stroke-layer-rest); /* border that adapts to layer */
+    border-radius: var(--corner-radius-medium, 8px);
+
+    /* Use the same layer as your page background, or pick a slightly elevated layer */
+    background: var(--neutral-layer-2); /* try -1, -2, or -3 based on your design */
+    color: var(--neutral-foreground-rest);
+}
+
+.source-attribution__icon img {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--control-corner-radius, 4px);
+}
+
+.source-attribution__glyph {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.source-attribution__title {
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: var(--neutral-foreground-rest);
+}
+
+.source-sep {
+    opacity: 0.6;
+}
+
+.source-attribution__meta {
+    font-size: 0.85rem;
+    color: var(--neutral-foreground-hint); /* subtle text */
+    margin-top: 2px;
+}
+
+.source-attribution__links {
+    margin-top: 6px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Use Fluent accent tokens for links */
+.fluent-link {
+    color: var(--accent-foreground-rest);
+    text-decoration: none;
+}
+.fluent-link:hover {
+    color: var(--accent-foreground-hover);
+    text-decoration: underline;
+}
+.fluent-link:active {
+    color: var(--accent-foreground-active);
+}

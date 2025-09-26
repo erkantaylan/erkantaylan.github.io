@@ -1,0 +1,66 @@
+﻿@page "/rtfc"
+@using GithubPage.Pages.Components
+
+<PageSourceComponent
+    Author="Elie"
+    SourceUrl="https://etsd.tech/posts/rtfc/"
+    Title="Read That F*cking Code!"
+    PublishedAt="@(new DateTimeOffset(2025, 9, 25, 0, 0, 0, TimeSpan.FromHours(3)))"
+/>
+
+<SummaryCardComponent Title="Thesis">
+    <p>
+        AI enables shipping without reading code, but doing so degrades architecture, erodes domain understanding,
+        and invites security bugs. Treat AI like a junior: make it read and follow your codebase, and always review its output.
+    </p>
+</SummaryCardComponent>
+
+<SummaryCardComponent Title="Risks">
+    <ol>
+        <li><strong>Weakened Architecture:</strong> Unchecked AI output causes pattern drift (e.g., business logic in controllers).</li>
+        <li><strong>Loss of Implementation Knowledge:</strong> Outcome-only dev atrophies domain modeling and upstream design.</li>
+        <li><strong>Security Vulnerabilities:</strong> Ownership checks/auth context often missed; least-privilege must be enforced.</li>
+    </ol>
+</SummaryCardComponent>
+
+<SummaryCardComponent Title="Vibe-Coding, Responsibly">
+    <ul>
+        <li><strong>Auto-accept for edges:</strong> Peripheral features and prototypes → faster cycles, less supervision.</li>
+        <li><strong>Supervise the core:</strong> Core business logic and critical fixes require synchronous review + tests.</li>
+    </ul>
+</SummaryCardComponent>
+
+<SummaryCardComponent Title="Practices">
+    <ul>
+        <li>Enforce boundaries (services vs controllers), keep examples clean to avoid drift.</li>
+        <li>Codify guardrails (e.g., CLAUDE.md, architecture docs, checklists).</li>
+        <li>Review auth, ownership, data exposure on every change.</li>
+        <li>Use AI for speed; never skip code review and tests.</li>
+    </ul>
+</SummaryCardComponent>
+
+<SummaryCardComponent Title="TR Kısa Özet">
+    <p>AI ile hızlı geliştirme güzel; ama kodu okumadan göndermek mimariyi bozar, alan bilgisini aşındırır ve güvenlik açıkları yaratır. AI’ı zeki bir junior gibi gör ve çıktıyı
+        mutlaka incele.</p>
+</SummaryCardComponent>
+
+
+
+@* <div style="margin: 10px"> *@
+@*     <li>It’s possible to ship code without ever reading it.#</li> *@
+@* *@
+@*     <li>1. A Weakened Architecture#</li> *@
+@* *@
+@*     <PageTitle>Read That F*cking Code!</PageTitle> *@
+@*     <li>You’re still the architect!</li> *@
+@* *@
+@*     <li> *@
+@*         You cannot delegate the act of thinking. *@
+@*     </li> *@
+@* *@
+@*     <li> *@
+@*         If you’re only focused on the end result, you’ll soon know as little as your users about how things actually work. You may be the most advanced user of your own app — but *@
+@*         you won’t own your domain anymore. *@
+@*     </li> *@
+@* *@
+@* </div> *@
