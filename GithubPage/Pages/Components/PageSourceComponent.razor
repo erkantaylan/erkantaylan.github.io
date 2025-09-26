@@ -1,0 +1,120 @@
+﻿@using System.Globalization
+<div class="source-attribution">
+    <div class="source-attribution__icon">
+        @if (!string.IsNullOrWhiteSpace(FaviconUrl))
+        {
+            <img src="@FaviconUrl" alt="Site icon" loading="lazy"/>
+        }
+        else if (!string.IsNullOrWhiteSpace(SiteUrl))
+        {
+            <!-- fallback favicon -->
+            <img src="@($"{new Uri(SiteUrl).GetLeftPart(UriPartial.Authority)}/favicon.ico")" alt="Site icon" loading="lazy"/>
+        }
+        else
+        {
+            <!-- simple fallback glyph -->
+            <span class="source-attribution__glyph">🔗</span>
+        }
+    </div>
+
+    <div class="source-attribution__content">
+        <div class="source-attribution__title">
+            @if (!string.IsNullOrWhiteSpace(Title))
+            {
+                <span class="source-title">@Title</span>
+            }
+            else
+            {
+                <span class="source-title">Source</span>
+            }
+            @if (!string.IsNullOrWhiteSpace(Author))
+            {
+                <span class="source-sep">·</span>
+                <span class="source-author">@Author</span>
+            }
+            @if (!string.IsNullOrWhiteSpace(SiteName))
+            {
+                <span class="source-sep">·</span>
+                <span class="source-site">@SiteName</span>
+            }
+        </div>
+
+        @if (PublishedAt is not null)
+        {
+            <div class="source-attribution__meta">
+                <span class="source-date" title="@PublishedAt.Value.ToString("O")">
+                    Published: @PublishedAt.Value.ToString(DateFormat ?? "yyyy-MM-dd", CultureInfo.InvariantCulture)
+                </span>
+            </div>
+        }
+
+        @if (Links is not null && Links.Count > 0)
+        {
+            <div class="source-attribution__links">
+                @foreach (LinkItem link in Links)
+                {
+                    <a class="fluent-link" href="@link.Href" target="_blank" rel="noopener noreferrer">
+                        @(!string.IsNullOrWhiteSpace(link.Label) ? link.Label : GetHostOrPath(link.Href))
+                    </a>
+                }
+            </div>
+        }
+        else if (!string.IsNullOrWhiteSpace(SourceUrl))
+        {
+            <div class="source-attribution__links">
+                <a class="fluent-link" href="@SourceUrl" target="_blank" rel="noopener noreferrer">
+                    @GetHostOrPath(SourceUrl)
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public string? Author { get; set; }
+
+    [Parameter]
+    public string? SiteName { get; set; }
+
+    [Parameter]
+    public string? SiteUrl { get; set; }
+
+    // Single primary source URL (optional if Links provided)
+    [Parameter]
+    public string? SourceUrl { get; set; }
+
+    // Optional favicon override; if null and SiteUrl provided, tries site-origin/favicon.ico
+    [Parameter]
+    public string? FaviconUrl { get; set; }
+
+    // Optional publication datetime
+    [Parameter]
+    public DateTimeOffset? PublishedAt { get; set; }
+
+    // Optional display format, default yyyy-MM-dd
+    [Parameter]
+    public string? DateFormat { get; set; }
+
+    // Support multiple links (e.g., canonical, archive.org, PDF, related threads)
+    [Parameter]
+    public List<LinkItem> Links { get; set; } = new();
+
+    public class LinkItem
+    {
+        public string Href { get; set; } = string.Empty;
+        public string? Label { get; set; }
+    }
+
+    private static string GetHostOrPath(string url)
+    {
+        if (Uri.TryCreate(url, UriKind.Absolute, out Uri? uri))
+            return uri.Host;
+        return url;
+    }
+
+}

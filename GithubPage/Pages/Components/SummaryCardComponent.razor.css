@@ -1,0 +1,23 @@
+.summary-card {
+    background: var(--neutral-layer-2);
+    border: 1px solid var(--neutral-stroke-layer-rest);
+    border-radius: var(--corner-radius-medium, 12px);
+    padding: 16px;
+    margin-top: 14px;
+    color: var(--neutral-foreground-rest);
+}
+.summary-title {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: var(--neutral-foreground-rest);
+}
+.summary-content {
+    font-size: 0.98rem;
+}
+.summary-content ol,
+.summary-content ul {
+    margin: 0.25rem 0 0 1rem;
+}
+.summary-content li + li {
+    margin-top: 4px;
+}
