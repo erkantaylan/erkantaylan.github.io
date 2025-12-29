@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Erkan Taylan's personal GitHub page">
-    <title>Erkan Taylan</title>
+    <title>Erkan Taylan | Developer</title>
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-white: #ffffff;
+            --bg-offset: #f8f9fa;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --primary: #0984e3;
+            --border: #dfe6e9;
+            --header-height: 70px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,65 +28,254 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            min-height: 100vh;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            height: var(--header-height);
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #fff;
+            justify-content: space-between;
+            padding: 0 10%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
-        .container {
-            text-align: center;
-            padding: 2rem;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, #e94560, #f39c12);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
 
-        p {
-            font-size: 1.25rem;
-            color: #a0a0a0;
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--bg-white);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border: 1px solid var(--border);
+            top: 100%;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-main);
+            padding: 12px 16px;
+            display: block;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        main {
+            margin-top: var(--header-height);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4rem 2rem;
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 700px;
+        }
+
+        .section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 2rem;
         }
 
-        .links {
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            padding: 4rem 10%;
+            background-color: var(--bg-offset);
+            border-top: 1px solid var(--border);
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .links a {
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: #fff;
+        .footer-links a {
+            color: var(--text-muted);
             text-decoration: none;
-            transition: all 0.3s ease;
+            margin-left: 1.5rem;
         }
 
-        .links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+        @media (max-width: 768px) {
+            header {
+                padding: 0 5%;
+                height: auto;
+                flex-direction: column;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                gap: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            main {
+                margin-top: 120px;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-links a {
+                margin: 0 0.75rem;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Erkan Taylan</h1>
-        <p>Welcome to my GitHub page</p>
-        <div class="links">
+    <header>
+        <a href="#" class="logo">Erkan Taylan</a>
+        <nav>
+            <a href="#home">Home</a>
+            <div class="dropdown">
+                <a href="#">Tools ▾</a>
+                <div class="dropdown-content">
+                    <a href="turkey-map/index.html">Interactive Turkey Map</a>
+                </div>
+            </div>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Software Engineer & Tool Builder</h1>
+            <p>I build interactive experiences, developer tools, and scalable web applications. Currently focused on
+                enhancing geospatial visualizations and data-driven interfaces.</p>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title">Who Am I</h2>
+            <div class="profile-grid">
+                <div class="about-text">
+                    <p>Hello! I'm Erkan, a developer passionate about creating clean, efficient, and user-centric
+                        software. My journey in technology is driven by curiosity and the desire to solve complex
+                        problems through elegant code.</p>
+                    <p>I specialize in modern web technologies, with a strong emphasis on front-end interactivity and
+                        backend performance. Whether it's crafting an interactive map of Turkey or architecting robust
+                        APIs, I strive for excellence in every project.</p>
+                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source
+                        projects, or perfecting my latest tool.</p>
+                </div>
+                <div class="quick-facts">
+                    <h3 style="margin-bottom: 1rem;">Quick Facts</h3>
+                    <ul style="list-style: none; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.5rem;">📍 Based in Turkey</li>
+                        <li style="margin-bottom: 0.5rem;">💻 Full-stack Development</li>
+                        <li style="margin-bottom: 0.5rem;">🏗️ Systems Architecture</li>
+                        <li style="margin-bottom: 0.5rem;">📊 Data Visualization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Erkan Taylan</p>
+        <div class="footer-links">
             <a href="https://github.com/erkantaylan">GitHub Profile</a>
         </div>
-    </div>
+    </footer>
 </body>
+
 </html>
