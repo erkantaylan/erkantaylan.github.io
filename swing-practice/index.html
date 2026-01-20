@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swing Dance Practice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>🕺 Swing Practice 💃</h1>
+
+    <!-- Pattern Selector -->
+    <div class="pattern-selector">
+        <button class="pattern-btn active" data-pattern="8-count">8 Count</button>
+        <button class="pattern-btn" data-pattern="6-count">6 Count</button>
+    </div>
+
+    <div class="beat-container" id="beatContainer"></div>
+
+    <!-- Visual Timeline Track -->
+    <div id="timelineTrack" class="timeline-track">
+        <div id="timelineCursor" class="timeline-cursor"></div>
+        <div id="timelineMarkers" class="timeline-markers"></div>
+    </div>
+
+    <div class="current-count" id="currentCount">-</div>
+    <div class="step-label" id="stepLabel">Ready to swing!</div>
+
+    <div class="controls">
+        <div class="controls-row">
+            <div class="control-panel">
+                <div class="control-panel__label">Tempo (BPM)</div>
+                <div class="control-panel__value control-panel__value--bpm" id="bpmValue">120</div>
+                <input type="range" class="slider slider--bpm" id="bpmSlider" min="60" max="220" value="120">
+                <div class="presets" id="bpmPresets"></div>
+            </div>
+
+            <div class="control-panel">
+                <div class="control-panel__label">Swing</div>
+                <div class="control-panel__value control-panel__value--swing" id="swingValue">50%</div>
+                <div class="control-panel__desc" id="swingDesc">Straight</div>
+                <input type="range" class="slider slider--swing" id="swingSlider" min="50" max="75" value="50">
+                <div class="presets" id="swingPresets"></div>
+            </div>
+        </div>
+
+        <button class="btn-start" id="btnStart">Start</button>
+
+        <div class="options">
+            <label class="toggle">
+                <input type="checkbox" id="soundToggle" checked>
+                <span>🔊 Sound</span>
+            </label>
+            <label class="toggle">
+                <input type="checkbox" id="countInToggle">
+                <span>Count-in</span>
+            </label>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

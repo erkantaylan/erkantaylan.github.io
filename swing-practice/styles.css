@@ -1,0 +1,497 @@
+/* ===== CSS Variables ===== */
+:root {
+    --color-bg-start: #1a1a2e;
+    --color-bg-mid: #16213e;
+    --color-bg-end: #0f3460;
+    --color-rock: #e94560;
+    --color-rock-light: #ff6b6b;
+    --color-triple: #00d9ff;
+    --color-triple-light: #00ff88;
+    --color-swing: #ffd700;
+    --color-swing-light: #ffaa00;
+    --color-text: #fff;
+    --color-text-muted: #a0a0a0;
+    --color-glass: rgba(255, 255, 255, 0.05);
+    --color-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-mid), var(--color-bg-end));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    padding: 10px;
+}
+
+/* ===== Typography ===== */
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, var(--color-rock), var(--color-rock-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+/* ===== Pattern Selector ===== */
+.pattern-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.pattern-btn {
+    padding: 8px 20px;
+    background: var(--color-glass);
+    border: 2px solid var(--color-glass-border);
+    border-radius: 20px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.pattern-btn:hover {
+    border-color: var(--color-rock);
+    color: var(--color-text);
+}
+
+.pattern-btn.active {
+    background: linear-gradient(135deg, var(--color-rock), var(--color-rock-light));
+    border-color: var(--color-rock-light);
+    color: var(--color-text);
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.4);
+}
+
+.step-label {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    margin-bottom: 15px;
+    min-height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ===== Beat Display ===== */
+.beat-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.beat-group {
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px;
+    border-radius: 25px;
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+}
+
+.beat-group--rock {
+    border-color: rgba(233, 69, 96, 0.3);
+}
+
+.beat-group--triple {
+    border-color: rgba(0, 217, 255, 0.3);
+}
+
+.beat {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.1s ease;
+    color: var(--color-text-muted);
+}
+
+.beat--and {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.beat.active {
+    transform: scale(1.2);
+    color: var(--color-text);
+}
+
+.beat--rock.active {
+    background: linear-gradient(135deg, var(--color-rock), var(--color-rock-light));
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.6);
+}
+
+.beat--triple.active {
+    background: linear-gradient(135deg, var(--color-triple), var(--color-triple-light));
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+}
+
+/* ===== Current Count ===== */
+.current-count {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    min-height: 80px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fff, #e0e0e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.current-count.running {
+    animation: pulse 0.1s ease-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* ===== Controls Layout ===== */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.controls-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== Control Panel ===== */
+.control-panel {
+    flex: 1;
+    min-width: 200px;
+    max-width: 240px;
+    text-align: center;
+    padding: 12px;
+    background: var(--color-glass);
+    border-radius: 12px;
+    border: 1px solid var(--color-glass-border);
+}
+
+.control-panel__label {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    color: var(--color-text-muted);
+}
+
+.control-panel__value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.control-panel__value--bpm {
+    color: var(--color-rock);
+}
+
+.control-panel__value--swing {
+    color: var(--color-swing);
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.control-panel__desc {
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+/* ===== Sliders ===== */
+.slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--color-glass-border);
+    border-radius: 3px;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.slider--bpm::-webkit-slider-thumb {
+    background: linear-gradient(135deg, var(--color-rock), var(--color-rock-light));
+    box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+}
+
+.slider--bpm::-moz-range-thumb {
+    background: linear-gradient(135deg, var(--color-rock), var(--color-rock-light));
+    box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+}
+
+.slider--swing::-webkit-slider-thumb {
+    background: linear-gradient(135deg, var(--color-swing), var(--color-swing-light));
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.slider--swing::-moz-range-thumb {
+    background: linear-gradient(135deg, var(--color-swing), var(--color-swing-light));
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* ===== Preset Buttons ===== */
+.presets {
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.preset-btn {
+    padding: 5px 10px;
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 15px;
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s ease;
+}
+
+.preset-btn:hover {
+    background: rgba(233, 69, 96, 0.3);
+    border-color: var(--color-rock);
+}
+
+.preset-btn--swing {
+    color: var(--color-swing);
+    border-color: rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.preset-btn--swing:hover {
+    background: rgba(255, 215, 0, 0.3);
+    border-color: var(--color-swing);
+}
+
+/* ===== Start/Stop Button ===== */
+.btn-start {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--color-rock), var(--color-rock-light));
+    color: var(--color-text);
+    box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
+}
+
+.btn-start:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(233, 69, 96, 0.6);
+}
+
+.btn-start.running {
+    background: linear-gradient(135deg, var(--color-triple), var(--color-triple-light));
+    box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+}
+
+/* ===== Toggle Options ===== */
+.options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.toggle input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .beat-group {
+        padding: 6px 8px;
+        gap: 3px;
+    }
+
+    .beat {
+        width: 30px;
+        height: 30px;
+        font-size: 0.95rem;
+    }
+
+    .beat--and {
+        width: 22px;
+        height: 22px;
+        font-size: 0.8rem;
+    }
+
+    .current-count {
+        font-size: 4rem;
+        min-height: 70px;
+    }
+
+    .control-panel {
+        min-width: 160px;
+        padding: 10px;
+    }
+
+    .control-panel__value {
+        font-size: 1.6rem;
+    }
+
+    .btn-start {
+        width: 70px;
+        height: 70px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== Touch Devices ===== */
+@media (hover: none) and (pointer: coarse) {
+    .preset-btn {
+        min-height: 44px;
+        padding: 8px 12px;
+    }
+
+    .slider {
+        height: 12px;
+    }
+
+    .slider::-webkit-slider-thumb {
+        width: 28px;
+        height: 28px;
+    }
+
+    .btn-start:hover {
+        transform: none;
+    }
+
+    .btn-start:active {
+        transform: scale(0.95);
+    }
+}
+
+/* ===== Timeline Track ===== */
+.timeline-track {
+    width: 100%;
+    max-width: 600px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.timeline-cursor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    left: 0;
+    will-change: transform;
+}
+
+.timeline-markers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.timeline-marker {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    /* Center the 1px line exactly on the percentage point */
+    transform: translateX(-50%);
+}
+
+.timeline-marker.strong {
+    background: rgba(255, 255, 255, 0.6);
+    width: 2px;
+}
+
+/* Removed timeline-label styles */
