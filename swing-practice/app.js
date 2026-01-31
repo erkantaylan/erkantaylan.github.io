@@ -124,6 +124,10 @@ function init() {
     createPresets();
     bindEvents();
     updatePatternButtons();
+
+    // Initialize controls to sync UI with state
+    setBpm(state.bpm);
+    setSwing(state.swingRatio);
 }
 
 function createBeats() {
@@ -304,7 +308,9 @@ function tick() {
 
     updateDisplay(beat);
 
-    const isAccent = beat.id === '1' || beat.id === '5';
+    // Accent on beat 1 always; on beat 5 only for 8-count (rock step)
+    // In 6-count, beat 5 is a triple step, not a rock step
+    const isAccent = beat.id === '1' || (beat.id === '5' && state.pattern === '8-count');
     const isAnd = beat.label === '&';
     playClick(isAccent, isAnd);
 
